@@ -15,7 +15,8 @@ def initialize_session_state():
     """
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
-
+    if 'model' not in st.session_state:
+        st.session_state.model = 'mixtral-8x7b-32768'
 
 def display_customization_options():
     """
@@ -24,7 +25,8 @@ def display_customization_options():
     st.sidebar.title('Customization')
     model = st.sidebar.selectbox(
         'Choose a model',
-        ['mixtral-8x7b-32768', 'llama2-70b-4096']
+        ['mixtral-8x7b-32768', 'llama2-70b-4096'],
+        key='model_selectbox'
     )
     conversational_memory_length = st.sidebar.slider('Conversational memory length:', 1, 10, value=5)
     return model, conversational_memory_length
@@ -54,7 +56,6 @@ def process_user_question(user_question, conversation):
     response = conversation(user_question)
     message = {'human': user_question, 'AI': response['response']}
     st.session_state.chat_history.append(message)
-    st.write("Chatbot:", response['response'])
 
 def main():
     """
@@ -64,22 +65,38 @@ def main():
 
     initialize_session_state()
 
-    st.title("Chat with a lightning fast AI chatbot!")
-    st.write("Hello! I'm your friendly groq-powered chatbot named Lightning. I can help answer your questions, provide information, or just chat. I'm also super fast! Let's start our conversation!")
+    st.title("Chat with Lightning, an ultra-fast AI chatbot powered by Groq LPUs!")
+
+
 
     model, conversational_memory_length = display_customization_options()
+
+    if st.session_state.model != model:
+        # Reset chat history and session state when the model is switched
+        st.session_state.chat_history = []
+        st.session_state.model = model
+        st.experimental_rerun()
+
     memory = ConversationBufferWindowMemory(k=conversational_memory_length)
 
-    user_question = st.text_input("Ask a question:")
+    st.divider()
+    if user_question:= st.chat_input("What is up?"):
+        st.session_state.chat_history.append({"human": user_question, "AI": ""})
+        with st.chat_message("user"):
+            st.markdown(user_question)
 
-    for message in st.session_state.chat_history:
-        memory.save_context({'input': message['human']}, {'output': message['AI']})
+        for message in st.session_state.chat_history:
+            memory.save_context({'input': message['human']}, {'output': message['AI']})
 
-    groq_chat = initialize_groq_chat(groq_api_key, model)
-    conversation = initialize_conversation(groq_chat, memory)
+        groq_chat = initialize_groq_chat(groq_api_key, model)
+        conversation = initialize_conversation(groq_chat, memory)
 
-    if user_question:
         process_user_question(user_question, conversation)
+
+        with st.chat_message("assistant"):
+            response = conversation(user_question)
+            st.markdown(response['response'])
+            st.session_state.chat_history[-1]["AI"] = response['response']
 
 if __name__ == "__main__":
     main()
