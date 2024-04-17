@@ -65,7 +65,4 @@ This project is licensed under the [MIT License](LICENSE).
 - [Langchain](https://github.com/hwchase17/langchain) for the powerful language modeling capabilities.
 - [Streamlit](https://streamlit.io) for the intuitive web framework.
 
-## Contact
-
-For any inquiries or feedback, please contact [your_email@example.com](mailto:your_email@example.com).
 
