@@ -62,8 +62,8 @@ def main():
 
     initialize_session_state()
 
-    st.title("Chat with Lightning, an ultra-fast AI chatbot powered by Groq LPUs!")
-
+    st.title("Lightning ⚡️")
+    st.markdown("Chat with Lightning, an ultra-fast AI chatbot powered by Groq LPUs!")
 
 
     model, conversational_memory_length = display_customization_options()
