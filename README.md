@@ -11,6 +11,8 @@
 
 Lightning is an ultra-fast AI chatbot powered by Groq LPUs (Language Processing Units), offering one of the fastest inference speeds on the market as of April 2024. With its advanced natural language processing capabilities and lightning-fast response times, Lightning provides an unparalleled conversational experience.
 
+## [Click here to try it out](https://lightning-ai.streamlit.app/)
+## [Click here to try out the specialised Style Guide Assistant](https://lightningai-styleguide-assistant.streamlit.app/)
 ## Features
 
 - ⚡ Ultra-fast inference powered by Groq LPUs
@@ -63,7 +65,4 @@ This project is licensed under the [MIT License](LICENSE).
 - [Langchain](https://github.com/hwchase17/langchain) for the powerful language modeling capabilities.
 - [Streamlit](https://streamlit.io) for the intuitive web framework.
 
-## Contact
-
-For any inquiries or feedback, please contact [your_email@example.com](mailto:your_email@example.com).
 
