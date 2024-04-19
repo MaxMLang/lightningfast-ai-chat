@@ -13,7 +13,7 @@ def initialize_session_state():
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
     if 'model' not in st.session_state:
-        st.session_state.model = 'mixtral-8x7b-32768'
+        st.session_state.model = 'llama3-8b-8192'
 
 def display_customization_options():
     """
@@ -22,7 +22,7 @@ def display_customization_options():
     st.sidebar.title('Customization')
     model = st.sidebar.selectbox(
         'Choose a model',
-        ['mixtral-8x7b-32768', 'llama2-70b-4096'],
+        ['llama3-8b-8192','mixtral-8x7b-32768', 'llama2-70b-4096'],
         key='model_selectbox'
     )
     conversational_memory_length = st.sidebar.slider('Conversational memory length:', 1, 10, value=5)
