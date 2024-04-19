@@ -1,5 +1,5 @@
 # Lightning Chatbot
-
+## Supports Meta AI's new Llama 3 Model!
 <p align="center">
   <img src="assets/logo.png" alt="Lightning Chatbot Logo" width="200" height="200">
 </p>
