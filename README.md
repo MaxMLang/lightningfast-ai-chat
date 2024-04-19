@@ -20,6 +20,15 @@ Lightning is an ultra-fast AI chatbot powered by Groq LPUs (Language Processing 
 - 💬 Seamless conversation history tracking
 - 🌐 Easy deployment using Streamlit web framework
 
+
+## Available Models
+- 🦙 **Llama3-70B-8192**: Experience high-end performance with this large-scale model, ideal for complex language tasks and deep learning insights.
+- 🦙 **Llama3-8B-8192**: Harness robust capabilities with this more accessible version of Llama3, perfect for a wide range of AI applications.
+- 🌟 **Mixtral-8x7B-32768**: Leverage the power of ensemble modeling with Mixtral's extensive capacity for nuanced understanding and response generation.
+- 🦙 **Llama2-70B-4096**: Utilize the proven effectiveness of Llama2 for comprehensive language processing and application development.
+- 💎 **Gemma-7B-IT**: Explore specialized interactions and tech-focused solutions with Gemma, tailored for IT and technical content.
+
+
 ## Installation
 
 1. Clone the repository:git clone https://github.com/MaxMLang/lightningfast-ai-chat.git
